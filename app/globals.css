@@ -343,11 +343,16 @@ body {
   background: #FFFFFF; /* Tasks created color */
   color: #0693E3; /* Blue text color for 'Tasks Created' label */
   min-width: 50%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  font-weight: 600 !important;
 }
 
 .stat-box h3 {
-  font-size: 2.5rem;
+  font-size: 100px;
   margin: 0;
+  font-weight: bolder;
 }
 
 .stat-box label {
