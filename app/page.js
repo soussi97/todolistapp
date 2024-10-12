@@ -11,7 +11,7 @@ import StatsComponent from './components/StatsComponent';
 import Footer from './components/Footer';
 import TaskForm from './components/TaskForm';
 import EditTaskForm from './components/EditTaskForm';
-
+import Typewriter from 'typewriter-effect';
 
 export default function HomePage() {
     const [tasks, setTasks] = useState([]);
@@ -104,6 +104,16 @@ export default function HomePage() {
             <Header onLogout={handleLogout} isAuthenticated={isAuthenticated} />
             {isAuthenticated ? (
                 <>
+                    <div className="greeting-container">
+                        <Typewriter
+                            options={{
+                                strings: ["Hello, Aqeel, Start planning today"],
+                                autoStart: true,
+                                loop: true,
+                                delay: 50,
+                            }}
+                        />
+                    </div>
                     <div className="row">
                         <div className="col-md-4 mb-4">
                             {/* Calendar component to select due date */}
