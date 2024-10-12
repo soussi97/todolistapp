@@ -13,12 +13,18 @@ const TaskForm = ({ onAddTask, selectedDate }) => {
             description,
             startDate: new Date().toISOString(), // Set start date to current date
             dueDate: selectedDate.toISOString(), // Set due date from selected date
-            status: 'pending',
+            status: 'Pending',
         };
+
+        console.log('New Task:', newTask);
 
         try {
             // Make an API call to add the task to the backend
-            const response = await axios.post('http://localhost:5000/api/tasks', newTask); // Replace with your actual API URL
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tasks`, newTask, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
             if (response.status === 201) {
                 // If the response is successful, add the task to the state
                 onAddTask(response.data);
@@ -32,7 +38,7 @@ const TaskForm = ({ onAddTask, selectedDate }) => {
     };
 
     return (
-        <div className="task-form d-flex align-items-center my-4" style={{ gap: '1rem'}}>
+        <div className="task-form d-flex align-items-center my-4" style={{ gap: '1rem' }}>
             {/* Task Title Input */}
             <input
                 type="text"
@@ -59,7 +65,7 @@ const TaskForm = ({ onAddTask, selectedDate }) => {
                 onClick={handleAddTask}
                 style={{
                     backgroundColor: '#8AA381',
-                    borderRadius: '5%%',
+                    borderRadius: '5%',
                     color: 'white',
                     fontSize: '2rem',
                     width: '3.5rem',

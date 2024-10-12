@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <header 
             className="header d-flex align-items-center justify-content-between p-3" 
-            style={{ backgroundColor: '#F5E1DC', borderBottom: '1px solid #E5E5E5' }}
+            style={{ backgroundColor: '#F5E1DC' }}
         >
             {/* Logo and App Title */}
             <div className="d-flex align-items-center">

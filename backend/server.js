@@ -49,10 +49,12 @@ app.get('/api/tasks', async (req, res) => {
 // Add a new task
 app.post('/api/tasks', async (req, res) => {
   try {
-    const newTask = new Task(req.body);
+    const { _id, ...taskData } = req.body; // Remove any existing _id field to avoid duplicates
+    const newTask = new Task(taskData);
     await newTask.save();
     res.status(201).json(newTask);
   } catch (error) {
+    console.error('Error adding task:', error);
     res.status(400).json({ message: 'Error adding task' });
   }
 });

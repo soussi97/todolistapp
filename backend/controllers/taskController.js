@@ -12,21 +12,25 @@ exports.getTasks = async (req, res) => {
 };
 
 // @desc    Create a new task
+// @desc    Create a new task
 exports.createTask = async (req, res) => {
   try {
-    const { title, description, startDate, dueDate } = req.body;
-    const newTask = new Task({
-      title,
-      description,
-      startDate,
-      dueDate,
-    });
-    const task = await newTask.save();
-    res.status(201).json(task);
+      console.log('Received Task Data:', req.body); // Log received data
+      const { title, description, startDate, dueDate } = req.body;
+      const newTask = new Task({
+          title,
+          description,
+          startDate,
+          dueDate,
+      });
+      const task = await newTask.save();
+      res.status(201).json(task);
   } catch (err) {
-    res.status(500).json({ message: 'Server Error' });
+      console.error('Error creating task:', err);
+      res.status(500).json({ message: 'Server Error' });
   }
 };
+
 
 // @desc    Update a task
 exports.updateTask = async (req, res) => {

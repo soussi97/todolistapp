@@ -22,6 +22,7 @@ body {
 
 /* Header Styles */
 .header {
+  border-radius: 0px 0px 10px 10px;
   text-align: center;
   margin: 0;
   font-weight: bold;
@@ -34,6 +35,7 @@ body {
   display: flex;
   align-content: center;
   flex-wrap: wrap;
+  gap:10px;
 
 }
 .card {
@@ -83,7 +85,7 @@ body {
 /* Add Task Button */
 .btn-add-task {
   background-color: var(--button-green);
-  border-radius: 50%;
+  border-radius: 5%;
   color: white;
   font-size: 2rem;
   width: 3.5rem;
@@ -104,7 +106,6 @@ body {
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   padding: 1.5rem;
-  margin-bottom: 1.5rem;
   transition: transform 0.2s;
 }
 
@@ -180,6 +181,7 @@ body {
 
 /* Calendar Styles */
 .calendar-container {
+
   margin-left: 30px;
   margin-top: 30px;
   background: #FFFFFF; /* White background for calendar */
@@ -189,6 +191,26 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   border: 0px;
+}
+
+/* New styles for the Day Name and Date */
+.calendar-header {
+  margin-bottom: 1rem;
+}
+
+.day-name {
+  font-family: 'cursive', sans-serif; /* Matches the cursive font style */
+  font-size: 2.5rem; /* Size that stands out */
+  color: var(--accent-color); /* Matches the accent color */
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.formatted-date {
+  font-family: var(--font-family); /* Matches the primary font family */
+  font-size: 2rem; /* Large enough to be prominent */
+  color: #333; /* Dark color for readability */
+  margin: 0;
 }
 
 .react-calendar {
@@ -226,14 +248,24 @@ body {
   text-transform: uppercase;
 }
 
-.react-calendar__month-view__weekNumbers .react-calendar__tile {
-  background-color: #707070; /* Dark grey for week number */
-  color: #FFFFFF; /* White numbers */
-  border-radius: 5px; /* Rounded week numbers */
+/* Week Numbers Styling */
+.react-calendar__month-view__weekNumbers {
+  font-family: var(--font-family);
   font-weight: bold;
-  padding: 0.5rem;
+  color: #333;
+  text-align: center;
 }
 
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  background-color: #707070; /* Dark grey for week numbers */
+  color: #FFFFFF; /* White numbers */
+  border-radius: 10px; /* Rounded corners for week numbers */
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-right: 5px;
+}
+
+/* Calendar Days Styling */
 .react-calendar__month-view__days button {
   background: none;
   border: none;
@@ -273,11 +305,14 @@ body {
   color: #C1A7A1; /* Dimmed color for days from other months */
 }
 
+
 /* Stats Section */
 .stats-container {
+  padding: 20px;
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  
 }
 
 .stat-box {
@@ -307,6 +342,7 @@ body {
 .stat-box.total {
   background: #FFFFFF; /* Tasks created color */
   color: #0693E3; /* Blue text color for 'Tasks Created' label */
+  min-width: 50%;
 }
 
 .stat-box h3 {
@@ -327,7 +363,7 @@ background-color: #fdfaf5;
 }
 
 .mt-4 {
-  margin-top: 0px !important; 
+  margin-top: 0 rem; 
   width: 100vw !important;
 }
 
@@ -335,4 +371,87 @@ background-color: #fdfaf5;
   .container, .container-lg, .container-md, .container-sm {
       max-width: 100% !important;
   }
+}
+
+/* Edit Task Form Styles */
+.form-control{
+  margin: 10px 0px 10px 0px;
+}
+.edit-task-form-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 500px;
+  z-index: 1000;
+}
+
+.edit-task-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.edit-task-form h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--grey);
+}
+
+.edit-task-form input,
+.edit-task-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--card-border-color);
+  border-radius: 10px;
+  font-family: var(--font-family);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.edit-task-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.edit-task-form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-task-form-buttons button {
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.edit-task-form-buttons .save-button {
+  background-color: var(--button-green);
+  color: white;
+}
+
+.edit-task-form-buttons .save-button:hover {
+  background-color: #6f8b6c;
+}
+
+.edit-task-form-buttons .cancel-button {
+  background-color: var(--pending-task-color);
+  color: white;
+}
+
+.edit-task-form-buttons .cancel-button:hover {
+  background-color: #d47d78;
 }

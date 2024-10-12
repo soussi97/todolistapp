@@ -8,22 +8,23 @@ const TaskForm = ({ onAddTask, selectedDate }) => {
     const [description, setDescription] = useState('');
 
     const handleAddTask = async () => {
-        if (!title || !description) {
-            alert("Title and description are required.");
-            return;
-        }
-
         const newTask = {
             title,
             description,
             startDate: new Date().toISOString(), // Set start date to current date
-            dueDate: selectedDate ? selectedDate.toISOString() : new Date().toISOString(), // Set due date from selected date
-            status: 'Pending', // Update status to be 'Pending' consistently
+            dueDate: selectedDate.toISOString(), // Set due date from selected date
+            status: 'Pending',
         };
+
+        console.log('New Task:', newTask);
 
         try {
             // Make an API call to add the task to the backend
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tasks`, newTask); // Use environment variable
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tasks`, newTask, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
             if (response.status === 201) {
                 // If the response is successful, add the task to the state
                 onAddTask(response.data);

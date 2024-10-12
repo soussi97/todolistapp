@@ -14,9 +14,7 @@ const TaskControls = () => {
                     className="form-control w-50 mx-2"
                     placeholder="Search by name"
                 />
-                <button className="btn-add-task">
-                    <strong>+</strong>
-                </button>
+             
             </div>
         </div>
     );
