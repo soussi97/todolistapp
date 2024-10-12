@@ -162,22 +162,55 @@ body {
 
 /* Footer */
 .footer {
-  background: var(--completed-task-color);
-  padding: 2.5rem;
+  background: #f7efea; /* Matches the background color shown in the image */
+  padding: 1.5rem 3rem;
   border-radius: 15px;
-  text-align: center;
-  color: var(--grey);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #1c1c33; /* Dark color for text */
+  font-family: var(--font-family);
 }
 
-.footer .social-icons a {
-  color: var(--grey);
-  transition: color 0.3s ease-in-out;
-  margin: 0 0.5rem;
+.footer-logo-container {
+  display: flex;
+  align-items: center;
 }
 
-.footer .social-icons a:hover {
+.footer-logo {
+  margin-right: 10px; /* Spacing between logo and text */
+}
+
+.footer-app-title {
+  font-family: 'cursive', sans-serif; /* Cursive font for the app name */
   color: var(--accent-color);
+  font-size: 1.8rem; /* Makes the app name prominent */
 }
+
+.footer-text {
+  font-size: 1rem;
+  color: #1c1c33;
+  margin: 0;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem; /* Space between icons */
+}
+
+.social-link {
+  color: #1c1c33; /* Dark icon color for initial state */
+  transition: color 0.3s ease-in-out, transform 0.3s;
+  border: 1px solid #1c1c33; /* Border matching the icon color */
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+.social-link:hover {
+  color: var(--accent-color);
+  transform: scale(1.1); /* Enlarge on hover */
+}
+
 
 /* Calendar Styles */
 .calendar-container {
