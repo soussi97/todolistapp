@@ -1,8 +1,20 @@
 'use client';
 import React from 'react';
-import Image from 'next/image'; // Assuming you're using next/image for profile pictures
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
-const Header = () => {
+const Header = ({ onLogout }) => {
+    const router = useRouter();
+
+    // Handle logout action
+    const handleLogout = () => {
+        localStorage.removeItem('authToken');
+        if (onLogout) {
+            onLogout();
+        }
+        router.push('/'); // Redirect to login page after logout
+    };
+
     return (
         <header 
             className="header d-flex align-items-center justify-content-between p-3" 
@@ -24,9 +36,9 @@ const Header = () => {
                 </h2>
             </div>
 
-            {/* User Profile */}
+            {/* User Profile and Logout */}
             <div className="profile-container d-flex align-items-center">
-                <div className="profile-picture" style={{ marginRight: '10px' }}>
+                <a href="/profile" className="profile-picture" style={{ marginRight: '10px' }}>
                     <Image
                         src="/profile.jpg" // Ensure the profile.jpg is inside the public folder
                         alt="User Profile"
@@ -34,7 +46,14 @@ const Header = () => {
                         height={50}
                         className="rounded-circle"
                     />
-                </div>
+                </a>
+                <button 
+                    className="btn btn-outline-secondary ms-3" 
+                    onClick={handleLogout}
+                    style={{ padding: '0.5rem 1rem', borderRadius: '10px' }}
+                >
+                    Logout
+                </button>
             </div>
         </header>
     );

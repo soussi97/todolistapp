@@ -345,6 +345,8 @@ body {
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
+  overflow: scroll;
+  scrollbar-width: none;
   
 }
 
@@ -409,6 +411,14 @@ background-color: #fdfaf5;
   .container, .container-lg, .container-md, .container-sm {
       max-width: 100% !important;
   }
+
+}
+
+@media (max-width: 768px) {
+  .task-card{
+    width: -webkit-fill-available !important;
+  }
+
 }
 
 /* Edit Task Form Styles */
@@ -493,3 +503,67 @@ background-color: #fdfaf5;
 .edit-task-form-buttons .cancel-button:hover {
   background-color: #d47d78;
 }
+
+
+.login-form-container {
+  margin: 15% 37% 10% 37%;
+  width: 300px;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  text-align: center;
+  color: #333;
+}
+
+.login-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.signup-button:hover {
+  background-color: #0069d9;
+}
+
